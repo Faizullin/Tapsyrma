@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content%}
+	<p>Природа Казахстана удивительная и разнообразная: здесь можно увидеть прекрасные цветочные степи и величественные заснеженные горы. При населении в 17 миллионов человек, большая часть территории остается незаселенной. Обширные степи, пустыни и горы являются ареалом обитания многих видов животных и птиц.</p>
+	<div class='guide'>
+		<div class="d-flex justify-content-between flex-wrap">
+			{% for key in info_path.paths['Путеводитель'][1] %}
+				<div class="guide_item"><p>{{key[0]}}</p><a href="{{key[2]}}" style="background-image: url('static/img/{{key[1]}}')"></a></div>
+			{% endfor%}
+		</div>
+	</div>
+{% endblock %}

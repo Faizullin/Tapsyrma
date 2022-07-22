@@ -1,0 +1,83 @@
+<!-- C://Users/user/desktop/tapsyrma/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+	<link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<title>BEAUTY</title>
+</head>
+<body>
+	<div class="header mb-5 sticky-top">
+		<nav class='main_nav shadow bg-white bottom row'>
+			<div class='offset-lg-1 col-lg-1'><a href="/" style='color:#000'><h2>Beauty</h2></a></div>
+			<ul class='col-lg-6 d-flex flex-row justify-content-between'>
+				<li class='d-flex justify-content-center align-self-center'><a href="">Регионы</a><div class='to_hide header_hide rounded'>
+						<a href="">Алматы и Алматинская область</a>
+						<a href="">Чарынский каньон</a>
+						<a href="">Озера Кольсай и Каинды</a>
+						<a href="">Пустынные местности</a>
+						<a href="">Леса</a>
+				</div></li>
+				{% for key,val in info_path.paths.items() %}
+					<li class='d-flex justify-content-center align-self-center'><a href="{{val[0]}}">{{key}}</a>
+						{% if val[1] %}
+						<div class='to_hide header_hide rounded'>
+							{% for i in val[1] %}
+								<a href="{{i[-1]}}">{{i[0]}}</a>
+							{% endfor %}
+						</div>
+						{% endif %}
+					</li>
+				{% endfor %}
+				<li class='d-flex justify-content-center align-self-center'><a class='to_hover ' href="#footer">О нас</a><div class='to_hide header_hide rounded'>
+					<p>Создатель Файзулла Осман</p>
+					<p>Страна Казахстан</p>
+					<p>Туристичекая компания BEAUTY</p>
+				</div></li>
+			</ul>
+			<div class="offset-lg-1 col-lg-3 d-flex align-items-center">
+				<div class='input-group'>
+					<div class="form-outline">
+						<input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+					</div>
+					<button type="button" class="btn btn-primary">
+						<i class="fas fa-search"></i>
+					</button>
+			</div>
+		</nav>
+	</div>
+	<div class="main">
+		<div class="container">
+			<div class="" style='border-left:7px solid red'><h3>{% block name %}Путеводитель{% endblock%}</h3></div>
+			{% block content%}{% endblock %}
+		</div>
+	</div>
+	<div id='footer' class="footer">
+		<div class="container">
+			<p>Создатель Файзулла Осман</p>
+			<p>Страна Казахстан</p>
+			<p>Туристичекая компания BEAUTY</p>
+			<a href="https://t.me/">МОй телеграм</a>
+		</div>
+	</div>
+
+</body>
+</html>
+<script>
+	$(document).ready(function(){
+		var timer;
+		$('.main_nav li').hover(function(){
+			$('.main_nav .to_hide').css('display','none')
+			$(this).find('.to_hide').css('display','flex');
+		}, function(){
+			var el=this;
+			setTimeout(function(){
+				$(el).find('.to_hide').css('display','none');
+			}, 4000);
+		});
+	});
+</script>

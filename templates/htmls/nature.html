@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block name%}Природа{%endblock%}
+{% block content%}
+	<div class='' style="min-height: 500px">
+		<p class='mt-5'>Природа Казастана по своему уникальна. Тут вы найдете то чего нет во всем мире</p>
+		<div class="d-flex justify-content-between row">
+			{% for i in info_path.paths['Природные красоты'][1] %}
+			<div class="col-lg-2 nature-item p-2 pt-7">
+				<a href="{{i[3]}}" style='background-image:url("static/img/{{i[1]}}");'></a>
+				<h4 class='mt-3 mb-3 '><a href="{{i[3]}}">{{i[0]}}</a></h4>
+				<p>{{i[2]}}</p>
+			</div>
+			{%endfor%}
+		</div>
+	</div>
+{% endblock %}

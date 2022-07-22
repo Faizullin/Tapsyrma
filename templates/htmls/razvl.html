@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block name%}Развлечение{%endblock%}
+{% block content%}
+	<div class=''>
+		<p class='mt-5'>Красоты Казастана пренесет вам не забываемые впечатления!</p>
+		<h3>Достопремечательности {{city}}</h3>
+		<div class="">
+			{% for i in razvl %}
+				<img src="{{i[1]}}" alt=""><p>{{i[0]}}</p>
+			{%endfor%}
+		</div>
+	</div>
+{% endblock %}

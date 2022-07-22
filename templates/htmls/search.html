@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block name%}Отели{%endblock%}
+{% block content%}
+	<div class='' style="min-height: 500px">
+		<ul class="list-group list-group-flush">
+			{% for i in info_path.blocks %}
+			<li class="list-group-item"><!-- p-2 pt-7-->
+				<h5>{{i[0]}}</h5>
+				{% if i[11] %}
+					<img src="{{i[11]}}" alt="{{i[11]}}">
+				{% else %}
+					<img src="{{info_path.unknown_thumbnail}}" alt="Неизвестно">
+				{% endif %}
+				<span>{{i[3]}}</span>
+				<span class="badge bg-primary rounded-pill">{{i[4]}}</span>
+				<p>{{i[7]}}</p>
+				<p>{{i[2]}}</p>
+			</li>
+			{%endfor%}
+		</ul>
+	</div>
+{% endblock %}
